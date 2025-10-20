@@ -19,3 +19,6 @@ function fetchProductsThen() {
 }
 // call the function to run it when the script loads
 fetchProductsThen();
+
+// step 4 create a function fetchProductsAsync()
+
