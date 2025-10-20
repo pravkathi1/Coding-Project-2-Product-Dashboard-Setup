@@ -66,3 +66,31 @@ function handleError(error) {
 
 // call the async function
 fetchProductsAsync();
+
+//step 5 displayProducts(products)
+function displayProducts(products) {
+  const container = document.getElementById("product-container");
+  container.innerHTML = ""; // Clear previous content
+
+  // limit to first 5 products
+  const topProducts = products.slice(0, 5);
+
+  topProducts.forEach((product) => {
+    const { name, price, image } = product.fields;
+    const imgURL = image[0].url;
+
+    // create product card
+    const card = document.createElement("div");
+    card.classList.add("product-card");
+
+    // add product details
+    card.innerHTML = `
+      <img src="${imgURL}" alt="${name}" class="product-img">
+      <h3 class="product-name">${name}</h3>
+      <p class="product-price">$${(price / 100).toFixed(2)}</p>
+    `;
+
+    // app to container
+    container.appendChild(card);
+  });
+}
