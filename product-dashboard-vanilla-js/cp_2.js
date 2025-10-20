@@ -35,27 +35,6 @@ async function fetchProductsAsync() {
   }
 }
 
-// function to display products
-function displayProducts(products) {
-  const container = document.getElementById("product-container");
-  container.innerHTML = ""; // clear before adding new items
-
-  products.forEach((product) => {
-    const { name, price, image } = product.fields;
-    const imgURL = image[0].url;
-
-    const productCard = document.createElement("div");
-    productCard.classList.add("product-card");
-
-    productCard.innerHTML = `
-      <img src="${imgURL}" alt="${name}">
-      <h3>${name}</h3>
-      <p>$${(price / 100).toFixed(2)}</p>
-    `;
-
-    container.appendChild(productCard);
-  });
-}
 
 // function to handle errors
 function handleError(error) {
@@ -94,3 +73,4 @@ function displayProducts(products) {
     container.appendChild(card);
   });
 }
+
