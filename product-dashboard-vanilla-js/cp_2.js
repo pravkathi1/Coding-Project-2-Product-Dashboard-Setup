@@ -13,12 +13,8 @@ function fetchProductsThen() {
         console.log(product.fields.name);
       });
     })
-    .catch((error) => {
-      console.error("Fetch error:", error.message);
-    });
+    .catch(handleError);
 }
-// call the function to run it when the script loads
-fetchProductsThen();
 
 // step 4 create a function fetchProductsAsync()
 async function fetchProductsAsync() {
@@ -35,16 +31,6 @@ async function fetchProductsAsync() {
   }
 }
 
-
-// function to handle errors
-function handleError(error) {
-  console.error("Error loading products:", error.message);
-  const container = document.getElementById("product-container");
-  container.innerHTML = `<p style="color: red;">Failed to load products. Please try again later.</p>`;
-}
-
-// call the async function
-fetchProductsAsync();
 
 //step 5 displayProducts(products)
 function displayProducts(products) {
@@ -74,3 +60,17 @@ function displayProducts(products) {
   });
 }
 
+function handleError(error) {
+  console.error("An error occurred:", error.message);
+
+  const container = document.getElementById("product-container");
+  if (container) {
+    container.innerHTML = `<p style="color: red;">An error occurred: ${error.message}</p>`;
+  }
+}
+
+
+// calling funcs
+
+fetchProductsThen();
+fetchProductsAsync();
